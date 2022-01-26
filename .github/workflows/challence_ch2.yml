@@ -20,3 +20,25 @@ jobs:
       uses: actions/checkout@v1
     - name: print date
       run: "Get-Date"
+
+  job3:
+    name: printing date on macos
+    runs-on: macos-latest
+    steps:
+    - name: checkout first
+      uses: actions/checkout@v1
+    - name: print date
+      run: date "+%H:%M:%S   %d/%m/%y"
+      
+  job4:
+    name: last one
+    needs: [job1, job2, job3]
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout first
+      uses: actions/checkout@v1
+    - name: print date
+      run: env | sort
+      
+  
+
