@@ -1,44 +1,17 @@
-name:  challed_ch2
+name:  python application
 
 on: [push]
 
 jobs:
   job1:
     name: printing date on ubuntu
+    
     runs-on: ubuntu-latest
-    steps:
-    - name: checkout first
-      uses: actions/checkout@v1
-    - name: print date
-      run: date "+%H:%M:%S   %d/%m/%y"
 
-  job2:
-    name: printing date on windows
-    runs-on: windows-latest
     steps:
-    - name: checkout first
-      uses: actions/checkout@v1
-    - name: print date
-      run: "Get-Date"
-
-  job3:
-    name: printing date on macos
-    runs-on: macos-latest
-    steps:
-    - name: checkout first
-      uses: actions/checkout@v1
-    - name: print date
-      run: date "+%H:%M:%S   %d/%m/%y"
-      
-  job4:
-    name: last one
-    needs: [job1, job2, job3]
-    runs-on: ubuntu-latest
-    steps:
-    - name: checkout first
-      uses: actions/checkout@v1
-    - name: print date
-      run: env | sort
-      
-  
-
+      - uses: actions/checkout@v2
+      - run: date "+%H:%M:%S   %d/%m/%y"
+      - name: Python Syntax Checker
+        # You may pin to the exact commit or the version.
+        # uses: cclauss/Find-Python-syntax-errors-action@90f67be9fb626b675a3971b1d08ab29851cb721f
+        uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
